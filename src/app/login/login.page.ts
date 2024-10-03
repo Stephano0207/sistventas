@@ -13,6 +13,17 @@ export class LoginPage implements OnInit {
 
   formLogin : FormGroup;
 
+  validation_messages = {
+    'email': [
+      { type: 'required', message: 'Escribir correo' },
+      { type: 'pattern', message: 'No es un formato de correo' }
+    ],
+      'password': [
+        { type: 'required', message: 'Escriba su password' },
+        // {type:'pattern',message:'Contraseña incorrecta'}
+      ]
+  };
+
 
   createFormGroup(){
     return new FormGroup({
@@ -22,15 +33,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  validation_messages = {
-    'email': [
-      { type: 'required', message: 'Escribir correo' },
-      { type: 'pattern', message: 'No es un formato de correo' }
-    ],
-      'password': [
-        { type: 'required', message: 'Escriba su password' }
-      ]
-    }
+
 
 
   constructor(private router:Router, private authService:AuthService,
@@ -76,5 +79,9 @@ export class LoginPage implements OnInit {
       console.log(error);
     });
   }
+
+save(){
+
+}
 
 }

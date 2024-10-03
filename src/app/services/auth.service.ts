@@ -11,7 +11,17 @@ export class AuthService {
   public verificarEmail(email:string){
     return this.http.get<any>(this.url+`/`+email);
   }
+
   public verificarClave(email:string,clave:string){
     return this.http.get<any>(this.url+`/`+email+`/`+clave);
   }
+
+  public save(email:any,password:any){
+    return this.http.post(this.url,{
+      email,
+      password,
+      estado:1
+    });
+  }
+
 }
